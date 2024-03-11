@@ -1,6 +1,6 @@
 provider "aws" {
     region = "ap-south-1"
-    #access_key = "AKIAXYKJSZ2JAI6D2FP7"
+    
     
 }
 resource "aws_instance" "myvm" {
