@@ -8,7 +8,7 @@ resource "aws_instance" "myvm" {
     instance_type = "t2.micro"
 
     tags = {
-      Name = "My First VM"
+      Name = "My 1st VM"
     }
 
 }
