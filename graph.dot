@@ -1,0 +1,75 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_eip.lb (expand)" [label = "aws_eip.lb", shape = "box"]
+		"[root] aws_elb.bar (expand)" [label = "aws_elb.bar", shape = "box"]
+		"[root] aws_iam_user.family (expand)" [label = "aws_iam_user.family", shape = "box"]
+		"[root] aws_instance.app-dev (expand)" [label = "aws_instance.app-dev", shape = "box"]
+		"[root] aws_instance.instance-1 (expand)" [label = "aws_instance.instance-1", shape = "box"]
+		"[root] aws_instance.myvm (expand)" [label = "aws_instance.myvm", shape = "box"]
+		"[root] aws_instance.prod (expand)" [label = "aws_instance.prod", shape = "box"]
+		"[root] aws_instance.replace_instance (expand)" [label = "aws_instance.replace_instance", shape = "box"]
+		"[root] aws_instance.test (expand)" [label = "aws_instance.test", shape = "box"]
+		"[root] aws_security_group.allow_tls (expand)" [label = "aws_security_group.allow_tls", shape = "box"]
+		"[root] aws_vpc.main (expand)" [label = "aws_vpc.main", shape = "box"]
+		"[root] aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4 (expand)" [label = "aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4", shape = "box"]
+		"[root] aws_vpc_security_group_ingress_rule.ElasticIP (expand)" [label = "aws_vpc_security_group_ingress_rule.ElasticIP", shape = "box"]
+		"[root] aws_vpc_security_group_ingress_rule.allow_tls_ipv4 (expand)" [label = "aws_vpc_security_group_ingress_rule.allow_tls_ipv4", shape = "box"]
+		"[root] data.aws_ami.app_ami (expand)" [label = "data.aws_ami.app_ami", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] var.ami" [label = "var.ami", shape = "note"]
+		"[root] var.elbnames" [label = "var.elbnames", shape = "note"]
+		"[root] var.elbregion" [label = "var.elbregion", shape = "note"]
+		"[root] var.https_port" [label = "var.https_port", shape = "note"]
+		"[root] var.iamusers" [label = "var.iamusers", shape = "note"]
+		"[root] var.istest" [label = "var.istest", shape = "note"]
+		"[root] var.region" [label = "var.region", shape = "note"]
+		"[root] var.tags" [label = "var.tags", shape = "note"]
+		"[root] var.timeout" [label = "var.timeout", shape = "note"]
+		"[root] aws_eip.lb (expand)" -> "[root] aws_instance.myvm (expand)"
+		"[root] aws_elb.bar (expand)" -> "[root] aws_instance.myvm (expand)"
+		"[root] aws_elb.bar (expand)" -> "[root] var.elbnames"
+		"[root] aws_elb.bar (expand)" -> "[root] var.elbregion"
+		"[root] aws_elb.bar (expand)" -> "[root] var.timeout"
+		"[root] aws_iam_user.family (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_iam_user.family (expand)" -> "[root] var.iamusers"
+		"[root] aws_instance.app-dev (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_instance.app-dev (expand)" -> "[root] var.ami"
+		"[root] aws_instance.app-dev (expand)" -> "[root] var.region"
+		"[root] aws_instance.app-dev (expand)" -> "[root] var.tags"
+		"[root] aws_instance.instance-1 (expand)" -> "[root] data.aws_ami.app_ami (expand)"
+		"[root] aws_instance.myvm (expand)" -> "[root] local.common_tag (expand)"
+		"[root] aws_instance.myvm (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_instance.prod (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_instance.prod (expand)" -> "[root] var.istest"
+		"[root] aws_instance.replace_instance (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_instance.test (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_instance.test (expand)" -> "[root] var.istest"
+		"[root] aws_security_group.allow_tls (expand)" -> "[root] aws_vpc.main (expand)"
+		"[root] aws_vpc.main (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4 (expand)" -> "[root] aws_security_group.allow_tls (expand)"
+		"[root] aws_vpc_security_group_ingress_rule.ElasticIP (expand)" -> "[root] aws_eip.lb (expand)"
+		"[root] aws_vpc_security_group_ingress_rule.ElasticIP (expand)" -> "[root] aws_security_group.allow_tls (expand)"
+		"[root] aws_vpc_security_group_ingress_rule.ElasticIP (expand)" -> "[root] var.https_port"
+		"[root] aws_vpc_security_group_ingress_rule.allow_tls_ipv4 (expand)" -> "[root] aws_security_group.allow_tls (expand)"
+		"[root] aws_vpc_security_group_ingress_rule.allow_tls_ipv4 (expand)" -> "[root] var.https_port"
+		"[root] data.aws_ami.app_ami (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] output.EIP (expand)" -> "[root] aws_eip.lb (expand)"
+		"[root] output.timestamp (expand)" -> "[root] local.time (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_elb.bar (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_iam_user.family (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_instance.app-dev (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_instance.instance-1 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_instance.prod (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_instance.replace_instance (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_instance.test (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_vpc_security_group_ingress_rule.ElasticIP (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_vpc_security_group_ingress_rule.allow_tls_ipv4 (expand)"
+		"[root] root" -> "[root] output.EIP (expand)"
+		"[root] root" -> "[root] output.timestamp (expand)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+	}
+}
+

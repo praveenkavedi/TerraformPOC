@@ -35,3 +35,4 @@ resource "aws_vpc_security_group_ingress_rule" "ElasticIP" {
   ip_protocol       = "tcp"
   to_port           = var.https_port
 }
+

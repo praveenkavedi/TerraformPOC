@@ -1,19 +1,29 @@
 provider "aws" {
-    region = "ap-south-1"
+  region = "ap-south-1"
 }
 
 locals {
   common_tag = {
     Name = "From Local Praveen"
   }
-  
+
 }
 resource "aws_instance" "myvm" {
-    ami = "ami-0ba259e664698cbfc"
-    instance_type = "t2.micro"
+  ami           = "ami-0ba259e664698cbfc"
+  instance_type = "t2.micro"
 
-    tags = local.common_tag
+  tags = local.common_tag
 
+/*
+  lifecycle {
+    prevent_destroy = true
+  }
+*/
+
+ lifecycle {
+    ignore_changes = [tags]
+  }
+  
 }
 /*
 resource "aws_vpc" "main" {

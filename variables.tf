@@ -7,13 +7,13 @@ variable "elbnames" {
 }
 
 variable "elbregion" {
-  type = list
+  type = list(any)
 }
 
 variable "timeout" {
-   type = number  
+  type = number
 }
 
 variable "iamusers" {
-  type = list 
+  type = list(any)
 }

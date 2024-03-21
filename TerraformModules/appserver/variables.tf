@@ -1,0 +1,3 @@
+variable "VMtype" {
+    type = string
+}
