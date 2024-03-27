@@ -3,10 +3,8 @@ resource "aws_instance" "myec2" {
    instance_type = "t2.micro"
    key_name = "terraform_provisioner"
 
-   
-
    connection {
-   type     = "https"
+   type     = "ssh"
    user     = "ec2-user"
    private_key = file("./terraform_provisioner.pem")
    host     = self.public_ip
